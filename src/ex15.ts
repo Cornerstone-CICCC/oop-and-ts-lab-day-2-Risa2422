@@ -7,14 +7,26 @@ interface Product {
   category: string;
 }
 
-function groupByCategory(products) {
-  
+function groupByCategory(products: Product[]): { [key: string]: Product[] } {
+  const newObj: { [key: string]: Product[] } = {};
+
+  for (let product of products) {
+    const category = product.category;
+    if (!newObj[category]) {
+      newObj[category] = [product];
+    }
+    newObj[category].push(product);
+  }
+
+  return newObj;
 }
 
 // Expected output:
-groupByCategory([
-  { name: "Apple", category: "Fruit" },
-  { name: "Carrot", category: "Vegetable" },
-  { name: "Orange", category: "Fruit" }
-])
+console.log(
+  groupByCategory([
+    { name: "Apple", category: "Fruit" },
+    { name: "Carrot", category: "Vegetable" },
+    { name: "Orange", category: "Fruit" },
+  ])
+);
 // { Fruit: [{ name: "Apple", category: "Fruit" }, { name: "Orange", category: "Fruit" }], Vegetable: [{ name: "Carrot", category: "Vegetable" }] }

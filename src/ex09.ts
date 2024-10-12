@@ -2,12 +2,10 @@
 // - Write a function `addStudent` that adds a student to the tuple and returns a new tuple.
 // - Return type: a new tuple with the student added.
 
-type Course = [
-  
-];
+type Course = [string, string, ...string[]];
 
-function addStudent(course, student) {
-  
+function addStudent(course: Course, student: string): Course {
+  return [...course, student];
 }
 
 // Expected output:
