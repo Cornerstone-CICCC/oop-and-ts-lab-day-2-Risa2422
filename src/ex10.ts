@@ -12,8 +12,11 @@ interface Manager {
   team: string;
 }
 
-function promoteToManager(dev, team) {
-  
+function promoteToManager(
+  info: Developer,
+  team: string
+): Developer & Manager {
+  return { ...info, team };
 }
 
 // Expected output:
